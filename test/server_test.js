@@ -1,13 +1,15 @@
+/*jshint expr: true*/
 'use strict';
 
 // Modules & Module Setup
 var chai = require('chai');
 var expect = chai.expect;
 var chaiHttp = require('chai-http');
+var date;
 chai.use(chaiHttp);
 
 // Start Server
-require('./server.js');
+require('../server.js');
 
 describe('server.js', function() {
   describe('routing to', function() {
@@ -18,21 +20,36 @@ describe('server.js', function() {
           .end(function(err, res) {
             expect(err).to.eql(null);
             expect(res).to.have.status(200);
-            expect(res.body).to.eql('');
+            expect(res.body.msg).to.exist;
+            date = new Date(res.body.msg);
+            expect( Date.parse(date) ).to.not.eql(NaN);
             done();
           });
       });
     });
 
     describe('GET /greet/name', function() {
-      it('greets the name passed in the query', function(done){
+      it('greets the name passed in the query', function(done) {
         chai.request('http://localhost:3000')
           .get('/greet/name')
           .query( {name: 'test'} )
-          .end(function(err, res){
+          .end(function(err, res) {
             expect(err).to.eql(null);
             expect(res).to.have.status(200);
-            expect(res.body).to.eq('hello, test.');
+            expect(res.body.msg).to.eq('hello, test');
+            done();
+          });
+      });
+    });
+
+    describe('GET /greet/test', function() {
+      it('greets the name passed in the query', function(done) {
+        chai.request('http://localhost:3000')
+          .get('/greet/test')
+          .end(function(err, res) {
+            expect(err).to.eql(null);
+            expect(res).to.have.status(200);
+            expect(res.body.msg).to.eq('hello, test');
             done();
           });
       });
@@ -46,7 +63,8 @@ describe('server.js', function() {
           .end(function(err, res) {
             expect(err).to.eql(null);
             expect(res).to.have.status(200);
-            expect(res.body).to.eql('hello, test.');
+            console.log("RETURNING THIS: ", res.body);
+            expect(res.body.msg).to.eql('hello, test');
             done();
           });
       });
@@ -59,7 +77,8 @@ describe('server.js', function() {
           .end(function(err, res) {
             expect(err).to.eql(null);
             expect(res).to.have.status(404);
-            expect(res.body).to.eql('could not be found');
+            console.log('BODY: ', res.body);
+            expect(res.body.msg).to.eql('could not find page');
             done();
           });
       });

@@ -11,16 +11,8 @@ var firstPartUrl;
 var date;
 var postData;
 var server = http.createServer(function(req, res) {
-  startOfName = url.parse(req.url, true).pathname.lastIndexOf('/') + 1
-  firstPartUrl = '/' + req.url.split('/')[1]
-
-  // console.log('HERE FOR URL: ', req.url );
-  // console.log('HERE FOR METHOD: ', req.method );
-  // console.log('TEST METHOD: ', req.method === 'POST' );
-  // console.log('HERE FOR PARSED URL: ', url.parse(req.url, true) );
-  // console.log('HERE FOR PATHNAME: ', url.parse(req.url, true).pathname );
-  // console.log('HERE FOR REQUEST: ', req );
-  // console.log('HERE FOR URL FORMAT: ', url.format(url.parse(req.url)) );
+  startOfName = url.parse(req.url, true).pathname.lastIndexOf('/') + 1;
+  firstPartUrl = '/' + req.url.split('/')[1];
 
 
   //// 11. Uncaught AssertionError: expected { Object (domain, _events, ...) } to have status code 200 but got 404

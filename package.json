@@ -1,0 +1,34 @@
+{
+  "name": "vanilla_server",
+  "version": "0.1.0",
+  "description": "Vanilla HTTP Server in Javascript.",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/grunt-cli/bin/grunt test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clintonjnelson/vanilla_server.git"
+  },
+  "keywords": [
+    "CodeFellows"
+  ],
+  "author": "clintonjnelson@live.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clintonjnelson/vanilla_server/issues"
+  },
+  "homepage": "https://github.com/clintonjnelson/vanilla_server",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-http": "^1.0.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-jscs": "^1.8.0",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.4",
+    "superagent-cli": "^1.5.5"
+  }
+}
